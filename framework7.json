@@ -1,0 +1,25 @@
+{
+  "cwd": "/workspaces/f7-svelte",
+  "type": [
+    "capacitor"
+  ],
+  "name": "My App",
+  "pkg": "io.framework7.myapp",
+  "framework": "svelte",
+  "template": "single-view",
+  "cssPreProcessor": false,
+  "bundler": "vite",
+  "capacitor": {
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkMode": false,
+    "iconFonts": false
+  },
+  "customBuild": false
+}
