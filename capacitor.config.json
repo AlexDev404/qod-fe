@@ -1,5 +1,5 @@
 {
-  "appId": "io.framework7.myapp",
+  "appId": "com.alexdev404.qodfe",
   "appName": "My App",
   "bundledWebRuntime": false,
   "npmClient": "npm",

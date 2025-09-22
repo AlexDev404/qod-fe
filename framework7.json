@@ -1,17 +1,16 @@
 {
-  "cwd": "/workspaces/f7-svelte",
+  "cwd": "/workspaces/qod-fe",
   "type": [
     "capacitor"
   ],
   "name": "My App",
-  "pkg": "io.framework7.myapp",
+  "pkg": "com.alexdev404.qodfe",
   "framework": "svelte",
   "template": "single-view",
   "cssPreProcessor": false,
   "bundler": "vite",
   "capacitor": {
     "platforms": [
-      "ios",
       "android"
     ]
   },
