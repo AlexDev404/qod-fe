@@ -2,7 +2,7 @@
 	import * as API from '@/ts/be/adapter';
 	import { Block, BlockTitle, Button, Navbar, Page } from 'framework7-svelte';
 
-	const APIInstance = new API.New(import.meta.env.VITE_BE_BASE, import.meta.env.VITE_BE_VERSION);
+	const APIInstance = new API.New(API.New.newEndpoint(), import.meta.env.VITE_BE_VERSION);
 	let pingResponse: API.HealthCheckResponse | null = $state(null);
 	let didPing: boolean = $state(false);
 </script>

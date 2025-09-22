@@ -1,3 +1,4 @@
+import { Capacitor } from '@capacitor/core';
 import HealthCheckResponse from './types/healthcheck';
 export type { HealthCheckResponse };
 class API {
@@ -23,6 +24,14 @@ class API {
 		} catch (error) {
 			console.error('Error fetching healthcheck:', error);
 			return null;
+		}
+	}
+
+	static newEndpoint(): string {
+		if (Capacitor.isNativePlatform()) {
+			return import.meta.env.VITE_BE_BASE_T;
+		} else {
+			return import.meta.env.VITE_BE_BASE;
 		}
 	}
 }
