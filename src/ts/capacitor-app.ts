@@ -169,9 +169,6 @@ const capacitorApp: CapacitorApp = {
 		capacitorApp.handleKeyboard();
 
 		if (Capacitor.isNativePlatform()) {
-			// Prevent content from rendering under the status bar (disable overlay)
-			StatusBar.setOverlaysWebView({ overlay: false });
-
 			// Optionally, set a style
 			StatusBar.setStyle({
 				style: import.meta.env.VITE_APP_THEME === 'light' ? Style.Light : Style.Dark
