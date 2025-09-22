@@ -28,6 +28,6 @@
     }
   },
   "lib": ["WebWorker"],
-  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte", "vite-env.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte", "vite-env.d.ts", "svelte.config.mjs"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

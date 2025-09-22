@@ -9,6 +9,7 @@ export default async () => {
 	return {
 		plugins: [
 			svelte({
+				configFile: path.resolve(ENV_DIR, './svelte.config.mjs')
 				// compilerOptions: {
 				//   compatibility: {
 				//     componentApi: 4
