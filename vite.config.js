@@ -33,6 +33,7 @@ export default async () => {
     resolve: {
       alias: {
         '@': SRC_DIR,
+        '$root': SRC_DIR,
       },
     },
     server: {

@@ -1,29 +1,42 @@
-var capacitorApp = {
+import { CapacitorApp, CapacitorGlobal, Framework7Instance } from './types';
+
+declare global {
+  interface Window {
+    Capacitor?: CapacitorGlobal;
+  }
+}
+
+const capacitorApp: CapacitorApp = {
   f7: null,
-  /*
-  This method hides splashscreen after 2 seconds
-  */
-  handleSplashscreen: function () {
-    var f7 = capacitorApp.f7;
+
+  /**
+   * This method hides splashscreen after 2 seconds
+   */
+  handleSplashscreen(): void {
     if (!window.Capacitor) return;
+    
     setTimeout(() => {
-      if (window.Capacitor.Plugins && window.Capacitor.Plugins.SplashScreen) {
+      if (window.Capacitor?.Plugins?.SplashScreen) {
         window.Capacitor.Plugins.SplashScreen.hide();
       }
     }, 2000);
   },
-  /*
-  This method prevents back button tap to exit from app on android.
-  In case there is an opened modal it will close that modal instead.
-  In case there is a current view with navigation history, it will go back instead.
-  */
-  handleAndroidBackButton: function () {
-    var f7 = capacitorApp.f7;
+
+  /**
+   * This method prevents back button tap to exit from app on android.
+   * In case there is an opened modal it will close that modal instead.
+   * In case there is a current view with navigation history, it will go back instead.
+   */
+  handleAndroidBackButton(): void {
+    const f7 = capacitorApp.f7;
+    if (!f7) return;
+    
     const $ = f7.$;
-    if (!window.Capacitor || !window.Capacitor.Plugins.App) return;
+    if (!window.Capacitor?.Plugins?.App) return;
+
     window.Capacitor.Plugins.App.addListener(
       'backButton',
-      function () {
+      (): void => {
         if ($('.actions-modal.modal-in').length) {
           f7.actions.close('.actions-modal.modal-in');
           return;
@@ -43,7 +56,7 @@ var capacitorApp = {
         if ($('.popup.modal-in').length) {
           if ($('.popup.modal-in>.view').length) {
             const currentView = f7.views.get('.popup.modal-in>.view');
-            if (currentView && currentView.router && currentView.router.history.length > 1) {
+            if (currentView?.router?.history?.length > 1) {
               currentView.router.back();
               return;
             }
@@ -67,7 +80,7 @@ var capacitorApp = {
         }
 
         const currentView = f7.views.current;
-        if (currentView && currentView.router && currentView.router.history.length > 1) {
+        if (currentView?.router?.history?.length > 1) {
           currentView.router.back();
           return;
         }
@@ -80,27 +93,38 @@ var capacitorApp = {
       false,
     );
   },
-  /*
-  This method does the following:
-    - provides cross-platform view "shrinking" on keyboard open/close
-    - hides keyboard accessory bar for all inputs except where it required
-  */
-  handleKeyboard: function () {
-    var f7 = capacitorApp.f7;
-    if (!window.Capacitor || !window.Capacitor.Plugins.Keyboard) return;
-    var $ = f7.$;
-    var Keyboard = window.Capacitor.Plugins.Keyboard;
-    if (!Keyboard) return;
+
+  /**
+   * This method does the following:
+   * - provides cross-platform view "shrinking" on keyboard open/close
+   * - hides keyboard accessory bar for all inputs except where it required
+   */
+  handleKeyboard(): void {
+    const f7 = capacitorApp.f7;
+    if (!f7) return;
+    
+    if (!window.Capacitor?.Plugins?.Keyboard) return;
+    
+    const $ = f7.$;
+    const Keyboard = window.Capacitor.Plugins.Keyboard;
+    
     Keyboard.setResizeMode({ mode: 'native' });
     Keyboard.setScroll({ isDisabled: true });
     Keyboard.setAccessoryBarVisible({ isVisible: false });
-    window.addEventListener('keyboardWillShow', () => {
-      f7.input.scrollIntoView(document.activeElement, 0, true, true);
+
+    window.addEventListener('keyboardWillShow', (): void => {
+      if (document.activeElement) {
+        f7.input.scrollIntoView(document.activeElement as HTMLElement, 0, true, true);
+      }
     });
-    window.addEventListener('keyboardDidShow', () => {
-      f7.input.scrollIntoView(document.activeElement, 0, true, true);
+
+    window.addEventListener('keyboardDidShow', (): void => {
+      if (document.activeElement) {
+        f7.input.scrollIntoView(document.activeElement as HTMLElement, 0, true, true);
+      }
     });
-    window.addEventListener('keyboardDidHide', () => {
+
+    window.addEventListener('keyboardDidHide', (): void => {
       if (document.activeElement && $(document.activeElement).parents('.messagebar').length) {
         return;
       }
@@ -110,11 +134,13 @@ var capacitorApp = {
     $(document).on(
       'touchstart',
       'input, textarea, select',
-      function (e) {
-        var nodeName = e.target.nodeName.toLowerCase();
-        var type = e.target.type;
-        var showForTypes = ['datetime-local', 'time', 'date', 'datetime'];
-        if (nodeName === 'select' || showForTypes.indexOf(type) >= 0) {
+      (e: Event): void => {
+        const target = e.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+        const nodeName = target.nodeName.toLowerCase();
+        const type = (target as HTMLInputElement).type;
+        const showForTypes: string[] = ['datetime-local', 'time', 'date', 'datetime'];
+        
+        if (nodeName === 'select' || showForTypes.includes(type)) {
           Keyboard.setAccessoryBarVisible({ isVisible: true });
         } else {
           Keyboard.setAccessoryBarVisible({ isVisible: false });
@@ -123,7 +149,11 @@ var capacitorApp = {
       true,
     );
   },
-  init: function (f7) {
+
+  /**
+   * Initialize the capacitor app with Framework7 instance
+   */
+  init(f7: Framework7Instance): void {
     // Save f7 instance
     capacitorApp.f7 = f7;
 
