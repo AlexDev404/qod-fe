@@ -1,5 +1,5 @@
 import HealthCheckResponse from './types/healthcheck';
-
+export type { HealthCheckResponse };
 class API {
 	base: string;
 	version: string;

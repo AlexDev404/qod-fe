@@ -4,6 +4,7 @@
 
 	const APIInstance = new API.New(import.meta.env.VITE_BE_BASE, import.meta.env.VITE_BE_VERSION);
 	let pingResponse: API.HealthCheckResponse | null = $state(null);
+	let didPing: boolean = $state(false);
 </script>
 
 <Page>
@@ -25,12 +26,12 @@
 			fill
 			on:click={async () => {
 				const res = await APIInstance.healthcheckPing();
-				console.log(res);
 				if (res) {
-					// alert(`Response from API: ${JSON.stringify(res)}`);
 					pingResponse = res;
+					didPing = true;
 				} else {
-					// alert('No response from API');
+					pingResponse = null;
+					didPing = true;
 				}
 			}}
 		>
@@ -42,6 +43,11 @@
 		<BlockTitle>API Response</BlockTitle>
 		<Block>
 			<pre>{JSON.stringify(pingResponse, null, 2)}</pre>
+		</Block>
+	{:else if didPing}
+		<BlockTitle>No API Response</BlockTitle>
+		<Block>
+			<p>The API did not respond or an error occurred.</p>
 		</Block>
 	{/if}
 </Page>
