@@ -1,17 +1,14 @@
 <script lang="ts">
-	import { House, Settings } from '@lucide/svelte';
 	import {
 		Block,
 		BlockTitle,
 		Button,
-		Link,
 		List,
 		ListItem,
 		Navbar,
 		NavTitle,
 		NavTitleLarge,
-		Page,
-		Toolbar
+		Page
 	} from 'framework7-svelte';
 </script>
 
@@ -23,11 +20,7 @@
 		<!-- Large Nav Title -- When at the top -->
 		<NavTitleLarge>{import.meta.env.VITE_APP_NAME}</NavTitleLarge>
 	</Navbar>
-	<!-- Toolbar -->
-	<Toolbar bottom>
-		<Link tabLink href="/"><House /></Link>
-		<Link tabLink href="settings"><Settings /></Link>
-	</Toolbar>
+
 	<!-- Page content -->
 	<Block>
 		<p>Here is your blank Framework7 app. Let's see what we have here.</p>

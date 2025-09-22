@@ -40,7 +40,8 @@ body {
 
 /* Disable the dragging of your usual elements unless strictly specified */
 img,
-svg, video,
+svg,
+video,
 canvas,
 audio,
 iframe,
@@ -49,4 +50,12 @@ object,
 a {
 	-webkit-user-drag: none;
 	user-select: none;
+}
+
+/* Prevent overscrolling the page---DIV element overscrolling prevention
+is very important */
+html,
+body,
+div {
+	overscroll-behavior: none;
 }
