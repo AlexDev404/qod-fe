@@ -37,3 +37,16 @@ video {
 body {
 	background-color: var(--f7-page-bg-color);
 }
+
+/* Disable the dragging of your usual elements unless strictly specified */
+img,
+svg, video,
+canvas,
+audio,
+iframe,
+embed,
+object,
+a {
+	-webkit-user-drag: none;
+	user-select: none;
+}
