@@ -9,7 +9,7 @@
 	const device = getDevice();
 	// Framework7 Parameters
 	let f7params = {
-		name: 'My App', // App name
+		name: import.meta.env.VITE_APP_NAME, // App name
 		theme: 'auto', // Automatic theme detection
 		// App routes
 		routes: routes,

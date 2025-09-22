@@ -27,6 +27,7 @@
       "$root/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
+  "lib": ["WebWorker"],
+  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte", "vite-env.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
