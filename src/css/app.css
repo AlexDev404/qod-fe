@@ -1,3 +1,35 @@
 @layer theme, base, components, utilities;
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/utilities.css" layer(utilities);
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+
+/* TailwindCSS preflight with some base styles omitted */
+/* Borders are reset */
+*,
+::after,
+::before,
+::backdrop,
+::file-selector-button {
+	box-sizing: border-box;
+	border: 0 solid;
+}
+
+/* Images are block-level */
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+	display: block;
+	vertical-align: middle;
+}
+
+/* Images are constrained */
+img,
+video {
+	max-width: 100%;
+	height: auto;
+}
