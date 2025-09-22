@@ -10,7 +10,7 @@
 	// Framework7 Parameters
 	let f7params = {
 		name: import.meta.env.VITE_APP_NAME, // App name
-		theme: 'auto', // Automatic theme detection
+		// theme: import.meta.env.VITE_APP_THEME, // Automatic theme detection
 		// App routes
 		routes: routes,
 
@@ -36,7 +36,7 @@
 	});
 </script>
 
-<App {...f7params}>
+<App {...f7params} class={import.meta.env.VITE_APP_THEME}>
 	<!-- Your main view, should have "view-main" class -->
 	<View main class="safe-areas" url="/" />
 </App>
