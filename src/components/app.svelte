@@ -36,7 +36,7 @@
 	});
 </script>
 
-<App {...f7params} class="mt-10">
+<App {...f7params} class="mt-12">
 	<!-- Your main view, should have "view-main" class -->
 	<View main class="safe-areas" url="/" />
 </App>
