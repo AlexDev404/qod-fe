@@ -8,6 +8,10 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development vite",
+    "cap:open": "npx cap sync && npx cap open android",
+    "cap:update": "npx cap update",
+    "cap:copy": "npx cap copy",
+    "cap:sync": "npx cap sync",
     "build": "cross-env NODE_ENV=production vite build",
     "build-capacitor-ios": "cross-env NODE_ENV=production vite build && npx cap copy ios",
     "build-capacitor-android": "cross-env NODE_ENV=production vite build && npx cap copy android"
