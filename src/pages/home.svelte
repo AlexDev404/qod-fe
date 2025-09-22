@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { House, Settings } from '@lucide/svelte';
 	import {
 		Block,
 		BlockTitle,
@@ -7,32 +8,25 @@
 		List,
 		ListItem,
 		Navbar,
-		NavLeft,
-		NavRight,
 		NavTitle,
 		NavTitleLarge,
 		Page,
 		Toolbar
 	} from 'framework7-svelte';
-	console.log(import.meta.env);
 </script>
 
 <Page name="home">
 	<!-- Top Navbar -->
-	<Navbar large sliding={false}>
-		<NavLeft>
-			<Link iconIos="f7:menu" iconMd="material:menu" panelOpen="left" />
-		</NavLeft>
+	<Navbar sliding={false}>
+		<!-- Nav Title -- When scrolling -->
 		<NavTitle sliding>{import.meta.env.VITE_APP_NAME}</NavTitle>
-		<NavRight>
-			<Link iconIos="f7:menu" iconMd="material:menu" panelOpen="right" />
-		</NavRight>
+		<!-- Large Nav Title -- When at the top -->
 		<NavTitleLarge>{import.meta.env.VITE_APP_NAME}</NavTitleLarge>
 	</Navbar>
 	<!-- Toolbar -->
 	<Toolbar bottom>
-		<Link>Left Link</Link>
-		<Link>Right Link</Link>
+		<Link tabLink href="/"><House /></Link>
+		<Link tabLink href="settings"><Settings /></Link>
 	</Toolbar>
 	<!-- Page content -->
 	<Block>
@@ -41,7 +35,7 @@
 
 	<BlockTitle>Navigation</BlockTitle>
 	<List strong inset dividersIos>
-		<ListItem link="/about/" title="About" />
+		<ListItem link="settings" title="About" />
 		<ListItem link="/form/" title="Form" />
 	</List>
 
