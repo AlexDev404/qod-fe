@@ -2,7 +2,6 @@
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
-
 /* TailwindCSS preflight with some base styles omitted */
 /* Borders are reset */
 *,
@@ -32,4 +31,9 @@ img,
 video {
 	max-width: 100%;
 	height: auto;
+}
+
+/* Match-up the theme background color with Framework7 page background color */
+body {
+	background-color: var(--f7-page-bg-color);
 }

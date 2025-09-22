@@ -36,7 +36,7 @@
 	});
 </script>
 
-<App {...f7params} class={import.meta.env.VITE_APP_THEME}>
+<App {...f7params} class="mt-10">
 	<!-- Your main view, should have "view-main" class -->
 	<View main class="safe-areas" url="/" />
 </App>
