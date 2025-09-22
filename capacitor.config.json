@@ -1,6 +1,6 @@
 {
   "appId": "com.alexdev404.qodfe",
-  "appName": "My App",
+  "appName": "What's the Quote",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

@@ -3,7 +3,7 @@
   "type": [
     "capacitor"
   ],
-  "name": "My App",
+  "name": "What's the Quote",
   "pkg": "com.alexdev404.qodfe",
   "framework": "svelte",
   "template": "single-view",
