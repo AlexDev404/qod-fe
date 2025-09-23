@@ -41,7 +41,7 @@
 <div class="fixed bottom-0 left-0 right-0 z-50 h-fit w-full">
 	<Toolbar top tabbar class="w-full">
 		<Link tabLink href="/"><House /></Link>
-		<Link tabLink href="settings"><Settings /></Link>
+		<Link tabLink href="/settings"><Settings /></Link>
 	</Toolbar>
 </div>
 <App {...f7params} class="mt-12 pb-24 z-0">
